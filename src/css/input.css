@@ -1,0 +1,20 @@
+.input-text {
+  width: 50%;
+  margin-right: 15px;
+}
+
+.list-item {
+  animation: openrtl 0.5s;
+}
+
+@keyframes openrtl {
+  0% {
+    opacity: 0;
+    transform: translateY(-7px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(7px);
+  }
+}

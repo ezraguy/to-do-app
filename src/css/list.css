@@ -1,0 +1,12 @@
+.container-list {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.list-item {
+  transition: 0.5s ease;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 1px grey solid;
+}
