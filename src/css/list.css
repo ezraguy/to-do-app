@@ -36,7 +36,7 @@
   transition: ease 0.3s;
 }
 
-.list-item i svg {
+.list-item svg {
   fill: green;
   position: absolute;
   opacity: 0;

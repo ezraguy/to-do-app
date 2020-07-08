@@ -6,10 +6,9 @@ class TasksList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: [
-        { id: 1, content: "buy milk", date: "10.4.2004" },
-        { id: 2, content: "play cod", date: "20.5.2005" },
-      ],
+      classes: "list-item animate__bounceInDown",
+      exitClasses: "list-item animate__backOutRight",
+      todos: [],
     };
   }
 
@@ -37,7 +36,7 @@ class TasksList extends Component {
     }
   };
 
-  deleteTask = (id) => {
+  deleteTask = (e, id) => {
     let { todos } = this.state;
     let filterdArr = _.filter(todos, (task) => {
       return task.id !== id;
@@ -54,19 +53,19 @@ class TasksList extends Component {
           <div className="container-list container ">
             {todos.map((task) => {
               return (
-                <div className="list-item animate__bounceInDown" key={task.id}>
+                <div className={this.state.classes} key={task.id}>
                   {task.content}
                   <span className="task-date text-muted">{task.date}</span>
-                  <i onClick={() => this.deleteTask(task.id)}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z" />
-                    </svg>
-                  </i>
+
+                  <svg
+                    onClick={(e) => this.deleteTask(e, task.id)}
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z" />
+                  </svg>
                 </div>
               );
             })}
