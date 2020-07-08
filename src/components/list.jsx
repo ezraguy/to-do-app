@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "../css/list.css";
 import _ from "lodash";
-import "animate.css/";
 class TasksList extends Component {
   constructor(props) {
     super(props);

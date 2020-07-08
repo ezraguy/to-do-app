@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../css/input.css";
+import "animate.css";
 class TaskInput extends Component {
   constructor(props) {
     super(props);
