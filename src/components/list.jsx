@@ -1,45 +1,84 @@
 import React, { Component } from "react";
-import { Container, List, ListItem } from "@material-ui/core";
 import "../css/list.css";
-
+import _ from "lodash";
+import "animate.css";
 class TasksList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       todos: [
-        { id: 1, content: "buy milk" },
-        { id: 2, content: "play cod" },
+        { id: 1, content: "buy milk", date: "10.4.2004" },
+        { id: 2, content: "play cod", date: "20.5.2005" },
       ],
     };
   }
+
+  getTodayDate = () => {
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, "0");
+    let mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+
+    let yyyy = today.getFullYear();
+    today = dd + "." + mm + "." + yyyy;
+
+    return today;
+  };
 
   componentDidUpdate = (prevProps) => {
     if (this.props.task !== prevProps.task) {
       let { todos } = this.state;
       let newTask = this.props.task;
-      todos.push({ id: Math.random() * 100, content: newTask });
+      todos.push({
+        id: Math.random() * 100,
+        content: newTask,
+        date: this.getTodayDate(),
+      });
       this.setState({ todos });
     }
+  };
+
+  deleteTask = (id) => {
+    let { todos } = this.state;
+    let filterdArr = _.filter(todos, (task) => {
+      return task.id !== id;
+    });
+
+    this.setState({ todos: filterdArr });
   };
 
   render() {
     const { todos } = this.state;
     if (todos.length) {
       return (
-        <Container>
-          <List className="container-list">
+        <div className="contaniner-fluid ">
+          <div className="container-list container ">
             {todos.map((task) => {
               return (
-                <ListItem className="list-item" key={task.id}>
+                <div className="list-item animate__bounceInDown" key={task.id}>
                   {task.content}
-                </ListItem>
+                  <span className="task-date text-muted">{task.date}</span>
+                  <i onClick={() => this.deleteTask(task.id)}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z" />
+                    </svg>
+                  </i>
+                </div>
               );
             })}
-          </List>
-        </Container>
+          </div>
+        </div>
       );
     } else {
-      return <p>hooray you are all done!</p>;
+      return (
+        <div className="container-list container ">
+          <p>hooray you are all done!</p>
+        </div>
+      );
     }
   }
 }

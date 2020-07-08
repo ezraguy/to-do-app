@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Container, Input, Button } from "@material-ui/core";
 import "../css/input.css";
 class TaskInput extends Component {
   constructor(props) {
@@ -9,30 +8,33 @@ class TaskInput extends Component {
 
   handleChange = (e) => {
     let taskValue = e.target.value;
-    this.setState({ taskValue: taskValue });
+    this.setState({ taskValue });
+  };
+
+  handleEnterClick = (e) => {
+    if (e.charCode === 13) {
+      this.props.getTask(this.state.taskValue);
+    }
   };
 
   render() {
     return (
-      <Container>
-        <Input
+      <div>
+        <input
+          placeholder="Enter task here..."
           className="input-text"
-          color={"primary"}
-          placeholder={"Enter a task..."}
-          required={true}
-          type={"text"}
-          margin={"dense"}
           value={this.state.taskValues}
           onChange={this.handleChange}
-        ></Input>
-        <Button
-          variant="contained"
-          color="primary"
+          onKeyPress={this.handleEnterClick}
+        ></input>
+
+        <button
+          className="btn btn-primary"
           onClick={() => this.props.getTask(this.state.taskValue)}
         >
           SAVE
-        </Button>
-      </Container>
+        </button>
+      </div>
     );
   }
 }
