@@ -8,7 +8,7 @@ class TasksList extends Component {
     this.state = {
       classes: "list-item animate__bounceInDown",
       exitClasses: "list-item animate__backOutRight",
-      todos: [],
+      todos: [{ id: "1", content: "Make a list", date: "08.07.2020" }],
     };
   }
 
