@@ -6,7 +6,6 @@ class TasksList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      classes: "list-item animate__bounceInDown",
       exitClasses: "list-item animate__backOutRight",
       todos: [{ id: "1", content: "Make a list", date: "08.07.2020" }],
     };
@@ -53,7 +52,7 @@ class TasksList extends Component {
           <div className="container-list container ">
             {todos.map((task) => {
               return (
-                <div className={this.state.classes} key={task.id}>
+                <div className="list-item animate__bounceInDown" key={task.id}>
                   {task.content}
                   <span className="task-date text-muted">{task.date}</span>
 
