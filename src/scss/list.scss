@@ -1,0 +1,57 @@
+.container-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: inset 0 0 10px;
+  padding: 10px;
+  height: 50vh;
+  border-radius: 10px;
+  overflow: auto;
+
+  .list-item {
+    animation-duration: 0.5s;
+    transition: 0.5s;
+    margin-bottom: 10px;
+    min-height: 40px;
+    overflow: hidden;
+    text-align: center;
+    word-break: break-word;
+    border: 1px grey solid;
+    padding-top: 5px;
+    position: relative;
+    box-shadow: 0 0 4px;
+    border-radius: 10px;
+    width: 30%;
+    margin-top: 10px;
+
+    .task-date {
+      float: left;
+      position: absolute;
+      left: 5px;
+      bottom: 0px;
+      font-size: 0.7em;
+      opacity: 0;
+      transition: ease 0.3s;
+    }
+    svg {
+      fill: green;
+      position: absolute;
+      opacity: 0;
+      right: 2%;
+      transition: ease 0.3s;
+      float: right;
+      cursor: pointer;
+    }
+    &:hover {
+      width: 40%;
+      overflow: auto;
+
+      .task-date {
+        opacity: 1;
+      }
+      svg {
+        opacity: 1;
+      }
+    }
+  }
+}

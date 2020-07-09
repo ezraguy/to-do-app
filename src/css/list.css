@@ -1,16 +1,26 @@
 .container-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: inset 0 0 10px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: inset 0 0 10px;
+          box-shadow: inset 0 0 10px;
   padding: 10px;
   height: 50vh;
   border-radius: 10px;
   overflow: auto;
 }
 
-.list-item {
-  animation-duration: 0.5s;
+.container-list .list-item {
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-transition: 0.5s;
   transition: 0.5s;
   margin-bottom: 10px;
   min-height: 40px;
@@ -20,41 +30,45 @@
   border: 1px grey solid;
   padding-top: 5px;
   position: relative;
-  box-shadow: 0 0 4px;
+  -webkit-box-shadow: 0 0 4px;
+          box-shadow: 0 0 4px;
   border-radius: 10px;
   width: 30%;
   margin-top: 10px;
 }
 
-.list-item .task-date {
+.container-list .list-item .task-date {
   float: left;
   position: absolute;
   left: 5px;
   bottom: 0px;
   font-size: 0.7em;
   opacity: 0;
+  -webkit-transition: ease 0.3s;
   transition: ease 0.3s;
 }
 
-.list-item svg {
+.container-list .list-item svg {
   fill: green;
   position: absolute;
   opacity: 0;
   right: 2%;
+  -webkit-transition: ease 0.3s;
   transition: ease 0.3s;
-}
-.list-item:hover {
-  width: 40%;
-  overflow: auto;
-}
-.list-item:hover svg {
-  opacity: 1;
-}
-.list-item:hover .task-date {
-  opacity: 1;
-}
-.list-item svg {
-  position: absolute;
   float: right;
   cursor: pointer;
 }
+
+.container-list .list-item:hover {
+  width: 40%;
+  overflow: auto;
+}
+
+.container-list .list-item:hover .task-date {
+  opacity: 1;
+}
+
+.container-list .list-item:hover svg {
+  opacity: 1;
+}
+/*# sourceMappingURL=list.css.map */
